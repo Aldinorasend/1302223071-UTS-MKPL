@@ -28,9 +28,14 @@ public class Employee {
 	
 	private String spouseName;
 	private String spouseIdNumber;
+	private FamilyMember spouse;
+	private List<FamilyMember> children;
 
-	private List<String> childNames;
-	private List<String> childIdNumbers;
+	public class FamilyMember {
+		private String name;
+		private String idNumber;
+	}
+	
 	
 	public Employee(String employeeId, PersonalInfo info, JoinDate joinDate) {
 		this.employeeId = employeeId;
