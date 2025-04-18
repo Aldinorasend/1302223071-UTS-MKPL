@@ -14,6 +14,10 @@ public class TaxFunction {
 	 * 
 	 */
 	
+	private static final int BASIC_NONTAXABLE_INCOME = 54000000;
+	private static final int MARRIED_NONTAXABLE_INCOME = 4500000;
+	private static final int CHILD_NONTAXABLE_INCOME = 1500000;
+	
 	
 	public static int calculateTax(int monthlySalary, int otherMonthlyIncome, int numberOfMonthWorking, int deductible, boolean isMarried, int numberOfChildren) {
 		
@@ -28,9 +32,9 @@ public class TaxFunction {
 		}
 		
 		if (isMarried) {
-			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - (54000000 + 4500000 + (numberOfChildren * 1500000))));
+			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - (BASIC_NONTAXABLE_INCOME + MARRIED_NONTAXABLE_INCOME + (numberOfChildren * CHILD_NONTAXABLE_INCOME))));
 		}else {
-			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - 54000000));
+			tax = (int) Math.round(0.05 * (((monthlySalary + otherMonthlyIncome) * numberOfMonthWorking) - deductible - BASIC_NONTAXABLE_INCOME));
 		}
 		
 		if (tax < 0) {
